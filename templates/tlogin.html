@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Teacher Login</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/froala_blocks.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+  <style>
+    .fdb-block {
+      border-bottom: 1px solid var(--light);
+    }
+
+    .gradient-custom {
+
+      background: #f4fbfb;
+    }
+
+    .input-container {
+      height: 50px;
+      position: relative;
+      width: 100%;
+    }
+
+    .ic1 {
+      margin-top: 40px;
+    }
+
+    .input:focus~.cut,
+    .input:not(:placeholder-shown)~.cut {
+      transform: translateY(8px);
+    }
+
+    .placeholder {
+      color: #3330a3;
+      font-family: sans-serif;
+      left: 20px;
+      line-height: 14px;
+      pointer-events: none;
+      position: absolute;
+      transform-origin: 0 50%;
+      transition: transform 200ms, color 200ms;
+      top: 20px;
+    }
+
+    .input:focus~.placeholder,
+    .input:not(:placeholder-shown)~.placeholder {
+      transform: translateY(-30px) translateX(10px) scale(0.75);
+    }
+
+    .input:not(:placeholder-shown)~.placeholder {
+      color: #808097;
+    }
+
+    .input:focus~.placeholder {
+      color: #3330a3;
+    }
+
+    .input {
+      background-color: #f1f1f1;
+      border-radius: 12px;
+      border: 0;
+      box-sizing: border-box;
+      color: #3330a3;
+      font-size: 18px;
+      height: 100%;
+      outline: 0;
+      padding: 4px 20px 0;
+      width: 100%;
+    }
+
+    .cut {
+      background-color: #fff;
+      border-radius: 10px;
+      height: 20px;
+      left: 20px;
+      position: absolute;
+      top: -20px;
+      transform: translateY(0);
+      transition: transform 200ms;
+      width: 76px;
+    }
+
+    .cut-short {
+      width: 50px;
+    }
+
+    .ic2 {
+      margin-top: 10px;
+    }
+
+    .top-space {
+      margin-top: 250px;
+    }
+  </style>
+</head>
+
+<script>
+  var page = window.location.pathname.split('/')
+  page = page[page.length - 1]
+
+  var nav = document.querySelector('a[href="' + page + '"]')
+  if (nav) {
+    nav.classList.add('active')
+  }
+</script>
+<nav class="navbar " style="background-color: #5f34e2;">
+  <a class="navbar-brand text-white" href="#">
+
+    <h1> <i class="fas fa-project-diagram fa"></i>
+      Project Grader</h1>
+
+  </a>
+  <div class="navbar navbar-light justify-content-end">
+    <a class="btn btn-outline-light m-1 " href="/registertr/">REGISTER</a>
+  </div>
+</nav>
+
+<body>
+  <section class="vh-100" style="background-color: #f4f8fb;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block" style="background-color: #3330a3;">
+                <h4 class="text-white text-center top-space">Project Management & Recruitment System</h4>
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="h1 fw-bold mb-0">Login</span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login into your account</h5>
+                  <form action='/tlogin/' method="post">
+                    {% csrf_token %}
+                    <!--username-->
+                    <div class="input-container ic1">
+                      <input id="firstname" type="username" class="input form-control" name=username placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="firstname" class="placeholder">Username</label>
+                    </div>
+                    <br>
+                    <!--password-->
+                    <div class="input-container ic2">
+                      <input id="firstname" type="password" class="input form-control" id="exampleInputPassword1"
+                        name=password id="exampleInputPassword1" placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="firstname" class="placeholder">Password</label>
+                    </div>
+
+                    <!--login button-->
+                    <div class="row mt-4">
+                      <div class="col">
+                        <button type="submit" class="btn btn-main btn-primary">Login</button>
+                      </div>
+                    </div>
+                    <p class="mb-0 mt-4">Don't have an account? <a href="/registertr/" class=" fw-bold">Register</a></p>
+
+                  </form>
+                  <div class="mt-4">
+                    {% for message in messages %}
+                    <h4>
+                      {{message}}
+                    </h4>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

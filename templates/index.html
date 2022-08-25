@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--css links-->
+  <!--bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+  <!-- icons -->
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <!--main css-->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+
+  <!-- scripts -->
+  <!-- bootstrap -->
+  <!--charts, jquery, popper-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <!-- icons -->
+  <script src="https://kit.fontawesome.com/fee06b6511.js" crossorigin="anonymous"></script>
+
+  <style>
+    .container1:hover {
+      background-color: #F4F8FB;
+    }
+
+    .container1 {
+      width: 22rem;
+      height: 20rem;
+      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+      position: relative;
+      z-index: 1;
+      background: white;
+      overflow: hidden;
+      border-radius: 7px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon-color {
+      color: #3330A3;
+    }
+
+    .ishape {
+      display: inline-block;
+      border-radius: 50px;
+      box-shadow: 0 0 2px #888;
+      padding: 0.2em 0.6em;
+    }
+
+    .hero {
+      background-image: url('{% static "images/lines.jpg" %}');
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+    }
+
+    .text-color {
+      color: var(--white-color);
+    }
+
+    .social-icon {
+      position: relative;
+      padding: 0;
+      margin: 5px 0 0 0;
+    }
+
+    .social-icon li {
+      display: inline-block;
+      list-style: none;
+    }
+
+    .social-icon li a {
+      text-decoration: none;
+      display: inline-block;
+      color: var(--p-color);
+      font-size: var(--p-font-size);
+      font-weight: var(--font-weight-bold);
+      margin: 5px 10px;
+      text-align: center;
+    }
+
+    .social-icon li a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar {
+      background: #3330A3;
+      padding: 1rem;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .navbar-brand {
+      color: #F4F8FB;
+      font-size: var(--h3-font-size);
+      font-weight: var(--font-weight-bold);
+      line-height: normal;
+      padding-top: 0;
+    }
+
+    .nav-item .nav-link {
+      display: block;
+      color: #F4F8FB;
+      font-size: var(--menu-font-size);
+      font-weight: var(--font-weight-normal);
+      text-transform: uppercase;
+      padding: 2px 6px;
+    }
+
+    .nav-item .nav-link.active,
+    .nav-item .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .navbar .social-icon li a {
+      color: #F4F8FB;
+    }
+
+    .navbar-toggler {
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      margin: 0 10px 0 0;
+      width: 30px;
+      height: 35px;
+      outline: none;
+    }
+
+    .navbar-toggler:focus {
+      outline: none;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background: transparent;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+      transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
+      transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+      transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
+      top: 0;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+      transform: rotate(45deg);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+      transform: rotate(-45deg);
+    }
+
+    .navbar-toggler .navbar-toggler-icon {
+      background: #F4F8FB;
+      transition: background 10ms 300ms ease;
+      display: block;
+      width: 30px;
+      height: 2px;
+      position: relative;
+    }
+
+    .navbar-toggler .navbar-toggler-icon::before,
+    .navbar-toggler .navbar-toggler-icon::after {
+      transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
+      transition: top 300ms 350ms ease, transform 300ms 50ms ease;
+      transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
+      position: absolute;
+      right: 0;
+      left: 0;
+      background: #F4F8FB;
+      width: 30px;
+      height: 2px;
+      content: '';
+    }
+
+    .navbar-toggler .navbar-toggler-icon::before {
+      top: -8px;
+    }
+
+    .navbar-toggler .navbar-toggler-icon::after {
+      top: 8px;
+    }
+
+    .btn {
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-main {
+      background-color: #3330A3;
+      color: #fff;
+    }
+
+    .btn-main:hover {
+      color: #fff;
+    }
+
+    .btn-center {
+      margin-left: 70px;
+    }
+
+    .btn-color {
+      color: white;
+      background-color: #3330A3;
+    }
+
+    .icon-color {
+      color: #3330A3;
+    }
+
+    .ishape {
+      display: inline-block;
+      border-radius: 50px;
+      box-shadow: 0 0 2px #888;
+      padding: 0.2em 0.6em;
+    }
+
+    h2 {
+      color: #3330A3;
+    }
+
+    .card-center {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+    }
+  </style>
+</head>
+
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50" style="background-color: #F4F8FB;">
+
+  <!-- NAV BAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+
+      <a class="navbar-brand" href="index.html">PMRS</a>
+
+      <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-lg-auto">
+          <li class="nav-item">
+            <a href="#home" class="nav-link smoothScroll">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#services" class="nav-link smoothScroll">Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#process" class="nav-link smoothScroll">Process</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contact" class="nav-link smoothScroll">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="social-icon ml-lg-3">
+          <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
+          <li><a href="#" class="fa fa-twitter"></a></li>
+          <li><a href="#" class="fa fa-instagram"></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <section class="home1 img-responsive d-flex flex-column justify-content-center align-items-center" id="home"
+    style="background-color: #3330a3; height:600px">
+
+    <div class="bg-overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto col-12">
+          <div class="hero-text mt-5 text-center">
+            <!--<marquee direction="right" scrollamount="50">  <hr style="color: #fff;"></marquee>-->
+            <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Project Management & Recruitment System</h1>
+            <hr style="color:white">
+            <p class="text-white" data-aos="fade-up" data-aos-delay="300">A single platform to serve Students,
+              Professors & Recruiters</p>
+            <hr style="color:white">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section id="services">
+    <h2 class="text-center mt-4">Services</h2>
+    <div class="row">
+      <div class="container1 container-fluid mt-4">
+        <div class="card-center mt-5">
+          <h3><b>Student</b></h3>
+          <i class="fas fa-user-graduate fa-2x mb-3 icon-color ishape"></i>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <form action='registerstud' method='GET'>
+              <button type="submit" class="btn btn-color" action='/registerstud/'>Register</button>
+            </form>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <form action='slogin' method='GET'>
+              <button type="submit" class="btn btn-color" action='slogin'>Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container1 container-fluid mt-4">
+        <div class="card-center mt-5">
+          <h3><b>Teacher</b></h3>
+          <i class="fas fa-chalkboard-teacher fa-2x mb-3 icon-color ishape"></i>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <form action='registertr' method='GET'>
+              <button type="submit" class="btn btn-color" action='registertr'>Register</button>
+            </form>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <form action='tlogin' method='GET'>
+              <button type="submit" class="btn btn-color" action='tlogin'>Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container1 container-fluid mt-4">
+        <div class="card-center mt-5">
+          <h3><b>Recruiter</b></h3>
+          <i class="fas fa-users fa-2x mb-3 icon-color ishape"></i>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-color"
+              onclick="window.location.href = 'http://localhost:3000/recruiter/dashboard/signup';">Register</button>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-color"
+              onclick="window.location.href = 'http://localhost:3000/recruiter/dashboard/login';">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--process-->
+
+  <h2 class="text-center mt-5 d-none d-lg-block">Process</h2>
+  <section class="process d-none d-lg-block" id="process">
+    <img src="{% static 'images/pm2.jpeg' %}">
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer mt-2" id="contact">
+    <div class="container">
+      <div class="row">
+
+        <div class="ml-auto col-lg-4 col-md-5">
+          <p class="copyright-text">Copyright &copy; Project Management & Recruitment System.
+
+            <br>Design: Name
+          </p>
+        </div>
+
+        <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+          <p class="mr-4">
+            <i class="fa fa-envelope-o mr-1"></i>
+            contact
+          </p>
+
+          <p><i class="fa fa-phone mr-1"></i> contact</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+
+  <script src="js/smoothscroll.js"></script>
+  <script src="custom.js"></script>
+
+
+</html>

@@ -1,0 +1,15 @@
+.organization-title {
+  font-weight: 400px;
+  font-size: 20px;
+}
+.job-description-header {
+  font-size: 18px;
+  font-weight: 400px;
+  line-height: 27px;
+}
+.next {
+  text-align: right;
+}
+.add_space_right {
+  margin-right: 20px;
+}

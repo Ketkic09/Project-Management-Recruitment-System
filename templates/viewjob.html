@@ -1,0 +1,166 @@
+{% load static %}
+{% block content %}
+<!Doctype html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="This is a project management website.Uploading of projects and grading takeplace on a single platform">
+  <meta name="keywords" content="Project Management">
+  <meta name="author" content="Ketki Chavan">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/fee06b6511.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+  <style>
+    .card {
+      margin: 0 auto;
+      /* Added */
+      float: none;
+      /* Added */
+      margin-bottom: 10px;
+      /* Added */
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-top: 50px;
+    }
+    .card-text{
+      color : #000000;
+    }
+    
+  </style>
+</head>
+
+{% if user.is_authenticated %}
+<nav class="navbar  sticky-top  justify-content-between" style="background-color: #3330A3;">
+  <div>
+    <a href="/StudentDashboard/">
+      <i class="fas fa-user-graduate fa-2x" style="color : #fff"></i>
+    </a>
+
+    &nbsp;
+
+    <a class="navbar-brand text-white">Hello,{{user.first_name}}</a>
+  </div>
+
+  <div class="navbar justify-content-end">
+    <a class="btn btn-outline-light m-1" href="/logout/">LOGOUT</a>
+  </div>
+</nav>
+{% endif %}
+
+</nav>
+
+<body>
+  {% csrf_token %}
+  {% for i in job %}
+
+  <div class="card">
+    <h4 class="card-header text-white " style="background-color: #3330A3;">Job ID: {{i.id}}</h4>
+    <div class="card-body">
+      <h4 class="card-title"><i class="bi bi-alarm-fill"></i> Application Deadline: {{i.application_end_date }}</h4>
+      <h2 class="card-title">{{i.title}}</h2>
+      <h3 class="card-title">{{i.organization}}</h3>
+      <p class="card-text"><i class="bi bi-geo-alt-fill"></i> {{i.city}}, {{i.country}}</p>
+      <p class="card-text"><i class="far fa-calendar-alt"></i> {{i.opportunity_start_date}} to {{i.opportunity_end_date}}</p>
+      <p class="card-text"><i class="fas fa-th-large"></i> {{i.domain}}</p>
+      <hr>
+      <h3>Salary & Job type:</h3>
+      <p class="card-text "><i class="fad fa-usd-circle"></i>{{i.currency}} {{i.salary_amount}} per {{i.period}} <i class="fad fa-usd-circle"></i>{{i.job_update}}</p> 
+      <hr>
+      <h3>Eligibility:</h3>
+       <!--hidden on small screen-->
+      <p class="card-text d-none d-lg-block">
+        <i class="bi bi-dot"></i>SSC {{i.ssc_marks}} 
+        <i class="bi bi-dot ml-5"></i>HSC {{i.hsc_marks}} 
+        <i class="bi bi-dot ml-5"></i>GRADUATE {{i.be_marks}} 
+        <i class="bi bi-dot ml-5"></i>YEAR OF PASS {{i.year_of_passing}}
+      </p>
+      <!--hidden on large screen-->
+      <p class="card-text d-lg-none">
+        <i class="bi bi-dot"></i>SSC {{i.ssc_marks}} 
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="bi bi-dot"></i>HSC {{i.hsc_marks}} 
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="bi bi-dot"></i>GRADUATE {{i.be_marks}} 
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="bi bi-dot"></i>YEAR OF PASS {{i.year_of_passing}}
+      </p>
+      <hr>
+      <h3>Job Description:</h3>
+      <p class="card-text">{{i.job_description}}</p>
+      <hr>
+      <h3>Rounds:</h3>
+      <p class="card-text "><i class="far fa-scrubber"></i>{{i.rounds}}</p>
+      <hr>
+      <h3>Contact Details:</h3>
+      <!--hidden on small screen-->
+      <p class="card-text d-none d-lg-block">
+        <i class="bi bi-person-circle"></i> {{i.contact_name}}
+        <i class="fas fa-phone-alt ml-5"></i> {{i.contact_phone}}
+        <i class="fas fa-envelope ml-5"></i> {{i.contact_email}}
+        <i class="fas fa-globe ml-5"></i> {{i.website}}
+      </p>
+      <!--hidden on large screen-->
+      <p class="card-text d-lg-none">
+        <i class="bi bi-person-circle"></i> {{i.contact_name}}
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="fas fa-phone-alt"></i> {{i.contact_phone}}
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="fas fa-envelope"></i> {{i.contact_email}}
+      </p>
+      <p class="card-text d-lg-none">
+        <i class="fas fa-globe"></i> {{i.website}}
+      </p>
+      <hr>
+      <h3>Additional Details:</h3>
+      <p class="card-text">{{i.additional_details}}</p>
+      <hr>
+      <a href="{% url 'jobapply' i.pk %}" class="btn btn-success">Apply</a>
+    </div>
+  </div>
+
+
+  {% endfor %}
+  {% endblock %}
+
+  <script>
+    $(document).ready(function () {
+      if (localStorage.getItem('Projectgraded')) {
+        console.log('entered if ')
+        Toastify({
+          text: "Project Graded Successfully!",
+          duration: 50000,
+          close: true,
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        }).showToast();
+        localStorage.removeItem('Projectgraded')
+
+      }
+    });
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</body>

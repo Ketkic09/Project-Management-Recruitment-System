@@ -1,0 +1,30 @@
+.cardicon {
+  color: #3330a3;
+}
+.cardtitle {
+  font-weight: bold;
+  font-size: 10px;
+  color: #3330a3;
+}
+.cardiconcol {
+  display: flex;
+  align-items: center;
+}
+.iconsub {
+  font-size: 12px;
+  color: #3330a3;
+}
+.cardbutton {
+  background-color: #3330a3;
+}
+.highlight {
+  color: #3330a3;
+  font-weight: 600px;
+}
+.cardbg {
+  background-color: #f4f8fb;
+}
+.highlight-2 {
+  color: #3330a3;
+  font-weight: 50px;
+}

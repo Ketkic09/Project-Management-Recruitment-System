@@ -1,0 +1,34 @@
+.Teachermenu {
+  background-color: #3330a3;
+  box-shadow: 10px;
+}
+.Teachermenu h4,
+.Teachermenu p {
+  color: white;
+}
+.previous {
+  text-align: left;
+}
+
+.next {
+  text-align: right;
+}
+@media only screen and (max-width: 600px) {
+  .next {
+    text-align: left;
+  }
+}
+.Heading-form h4,
+.Heading-form p {
+  display: inline;
+}
+.line-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

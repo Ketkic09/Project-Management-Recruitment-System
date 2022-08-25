@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/fee06b6511.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- partial:index.partial.html -->
+  <input type="checkbox" name="" id="menu-toggle">
+
+  <div class="overlay"><label for="menu-toggle">
+    </label></div>
+  <div class="sidebar">
+    <div class="sidebar-container">
+      <div class="brand text-center">
+        <h4>
+          <span class="lab la-staylinked"></span>
+          Project Grader
+        </h4>
+      </div>
+      <div class="sidebar-avatar">
+        <div>
+
+          <a href="/StudentDashboard/"><span class="bi bi-person-circle fa-3x log-color"></span></a>
+
+        </div>
+        <div class="avatar-info text-left">
+          <div class="avatar-text">
+            <h4 class="mb-0">{{user.first_name}}</h4>
+            <small>@{{user}}</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-menu">
+        <li><a href="#" class="active sidebar-icon-text"><i class="las la-adjust"></i>Dasboard</a></li>
+        <li><a href="http://localhost:3000/" class="sidebar-icon-text"><i class="bi bi-grid-fill"></i> Quizzes</a></li>
+        <li>
+          <div class="dropdown">
+            <a class="sidebar-icon-text"><i class="bi bi-list-ul"></i> Projects<i class="las la-angle-down"></i></a>
+            <div class="dropdown-content">
+              <a href="/addProject/">Add projects</a>
+              <a href="/sprojview/">View previous</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a class="sidebar-icon-text"><i class="bi bi-briefcase-fill"></i> Jobs<i class="las la-angle-down"></i></a>
+            <div class="dropdown-content">
+              <a href="/jobList/">Job List</a>
+              <a href="/jobApplied/">Applied Jobs</a>
+            </div>
+          </div>
+        </li>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header style="background-color: #F4F8FB;">
+      <div class="header-wrapper">
+        <label for="menu-toggle">
+          <span class="las la-bars"></span>
+        </label>
+        <div class="header-title">
+          <h2>Hello, {{user.first_name}}</h2>
+          <hr class="header-hr">
+        </div>
+
+      </div>
+
+      <div class="header-action justify-content-end">
+        {% if pd %}
+
+        <a href="/edit_personalDetails/" data-toggle="popover" title="Profile" data-content="Another popover"><span
+            class="bi bi-person-circle fa-2x log-color"></span></a>
+        {% else %}
+        <a href="/personaldetails/" data-toggle="popover" title="Profile" data-content="Another popover"><span
+            class="bi bi-person-circle fa-2x log-color"></span></a>
+
+        {% endif %}
+
+        <a href="/logout/" data-toggle="popover" title="Logout" data-content="Another popover"><span
+            class="bi bi-box-arrow-right fa-2x log-color ml-4"></span></a>
+      </div>
+
+
+    </header>
+    <main>
+      <section>
+        <!-- cards -->
+        <h3 class="section-head">Overview</h3>
+        <div class="analytics">
+
+          <div class="analytic justify-content-center">
+            <div class="analytic-info">
+              <h4>Project Score</h4>
+              <h1>{{ps}}</h1>
+            </div>
+          </div>
+
+          <div class="analytic justify-content-center">
+            <div class="analytic-info">
+              <h4>Sem Average</h4>
+              <h1>{{ pd.sem_average_marks }}</h1>
+            </div>
+          </div>
+
+          <div class="analytic justify-content-center">
+            <div class="analytic-info">
+              <h4>Test Score</h4>
+              <h1>{{ts}}</h1>
+            </div>
+          </div>
+
+          <div class="analytic justify-content-center">
+            <div class="analytic-info text-center">
+              <h4>EQ</h4>
+
+              <h1>{{ pd.eq }}</h1>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="block-grid">
+          <h3 class="section-head">Graph</h3>
+          <div class="graph-content">
+            <div class="graph-head">
+              <h3>Comparison of Employibility Quotient</h3>
+            </div>
+            <div class="graph-board">
+
+              <div id="container" style="width: 75%;" class="align-items-center">
+
+                <canvas id="salarychart" width="100%"></canvas>
+              </div>
+              <hr>
+              <div id="container" style="width: 100%;">
+                <h3>Comparison of Technologies</h3>
+                <canvas id="pie-chart"></canvas>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+  </div>
+
+  </section>
+  </main>
+  </div>
+  <!-- partial -->
+
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+  <script>
+    var ztx = document.getElementById('salarychart');
+    var myChart = new Chart(ztx, {
+      type: 'bar',
+      data: {
+        labels: [{% for key in chart.label %}'{{key}}',{% endfor %}],
+    datasets: [{
+      label: 'Employibility Quotient',
+      data: [{% for key in chart.data %}'{{key}}', {% endfor %}],
+      backgroundColor:
+    'rgb(51,48,163,0.5)',
+      borderColor:
+    'rgb(51,48,163,1)',
+      borderWidth: 1,
+        minBarLength: 1,
+    }]
+},
+    options: {
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Month'
+          }
+        }],
+          yAxes: [{
+            display: true,
+            ticks: {
+              beginAtZero: true,
+              steps: 1,
+              stepValue: 5,
+              max: 10
+            }
+          }]
+      }
+
+    }
+
+});
+
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function getRandomColorEachEmployee(count) {
+      var datacolor = [];
+      for (var i = 0; i < count; i++) {
+        datacolor.push(getRandomColor());
+        console.log(i)
+      }
+      return datacolor;
+    }
+    let c = 5
+    var a = "{{chart2.piedata}}";
+    var config = {
+
+      type: 'pie',
+
+      data: {
+
+        datasets: [{
+          data: [{% for item in chart2.piedata %}'{{item}}', {% endfor %}],
+      backgroundColor: getRandomColorEachEmployee(a.length),
+      label: 'Technology Distribution'
+    }],
+
+      labels: [{% for item in chart2.pielabel %}'{{item}}', {% endfor %}]
+      },
+    options: {
+      responsive: true
+    }
+    };
+
+    window.onload = function () {
+      var ytx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ytx, config);
+    };
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>
